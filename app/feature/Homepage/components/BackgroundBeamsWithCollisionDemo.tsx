@@ -1,6 +1,6 @@
 import React from "react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { InfiniteMovingCardsDemo } from "./InfiniteMovingCardsDemo";
 
 export function BackgroundBeamsWithCollisionDemo() {
@@ -19,7 +19,7 @@ export function BackgroundBeamsWithCollisionDemo() {
             </div>
             <div className=" mx-auto flex flex-col w-full [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
               <div className=" bg-clip-text  flex justify-end items-end   text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4">
-                <TypewriterEffect
+                <TypewriterEffectSmooth
                   className="flex ml-auto"
                   words={[
                     {
