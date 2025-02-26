@@ -54,7 +54,7 @@ export function SendEmail() {
 
   return (
     <div
-      className="grid grid-cols-2 max-lg:grid-cols-1"
+      className="grid grid-cols-2 max-lg:grid-cols-1 relative"
       style={{ paddingLeft: "10%", paddingRight: "10%" }}
     >
       <div className="w-full mx-auto rounded-none   p-4 md:p-8  bg-white dark:bg-black">
