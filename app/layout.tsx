@@ -3,12 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import { ToggleTheme } from "@/components/ToggleTheme";
+import { Button } from "@/components/ui/button";
+import Scroll from "@/components/Scroll";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <ThemeProvider
           attribute="class"
@@ -37,6 +38,10 @@ export default function RootLayout({
         >
           <Header />
           {children}
+          <div className="fixed bottom-4 right-4 lg:hidden">
+            <ToggleTheme />
+          </div>
+          <Scroll />
         </ThemeProvider>
       </body>
     </html>

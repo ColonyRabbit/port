@@ -7,8 +7,8 @@ import {
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-interface TimelineEntry {
-  title: string;
+export interface TimelineEntry {
+  title: string | React.ReactNode;
   content: React.ReactNode;
 }
 
@@ -34,6 +34,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
+      id="Experience"
       className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10"
       ref={containerRef}
     >
