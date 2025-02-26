@@ -47,7 +47,7 @@ function Navbar({ className }: { className?: string }) {
         className=" flex  items-center w-1/2 justify-around max-lg:w-full max-lg:px-2"
         setActive={setActive}
       >
-        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
+        <div className="flex items-center gap-1 text-2xl max-sm:text-xs">
           <Link className="flex items-center" href="/">
             {" "}
             <IoHomeOutline />
@@ -61,14 +61,14 @@ function Navbar({ className }: { className?: string }) {
             </MenuItem>
           </Link>
         </div>
-        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
+        <div className="flex items-center gap-1 text-2xl max-sm:text-xs">
           <RiContactsFill />
 
-          <Link className="max-lg:text-2xl max-sm:text-xs" href="about">
+          <Link className="text-base max-sm:text-xs" href="about">
             About me
           </Link>
         </div>
-        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
+        <div className="flex items-center gap-1 text-2xl max-sm:text-xs">
           <SlEnvolopeLetter />
           <MenuItem setActive={setActive} active={active} item="Contact">
             <div className="  text-sm grid grid-cols-2 gap-10 p-4 max-lg:grid-cols-1">
@@ -96,7 +96,7 @@ function Navbar({ className }: { className?: string }) {
             </div>
           </MenuItem>
         </div>
-        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
+        <div className="flex items-center gap-1 text-2xl max-sm:text-xs">
           {" "}
           <FaHourglassStart />
           <MenuItem setActive={setActive} active={active} item="Experience">

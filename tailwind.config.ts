@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 export default {
   darkMode: ["class"],
   content: [
@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
+      },
       fontFamily: {
         bookerly: ["var(--font-bookerly)"], // เพิ่มฟอนต์ Bookerly
       },
@@ -110,5 +113,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [addVariablesForColors],
 } satisfies Config;
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}

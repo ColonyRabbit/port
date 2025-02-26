@@ -1,10 +1,35 @@
 import Image from "next/image";
 import React from "react";
 import { Timeline, TimelineEntry } from "@/components/ui/timeline";
-import { FocusCardsSSL } from "./FocusCardsDemo";
+import { FocusCardsExhibition } from "./FocusCardsExhibition";
+import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 
 export function TimelineDemo() {
   const data: TimelineEntry[] = [
+    {
+      title: <>Exhibition 19 MAR 2024</>,
+      content: (
+        <div>
+          <div className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Rajamangala University of Technology Krungthep .
+            <p>
+              I participated in a project proposal competition in the Faculty of
+              Science and won first place.
+            </p>
+          </div>
+          {/* <div className="grid grid-cols-3 gap-4"> */}
+          {/* <FocusCardsExhibition /> */}
+          <div className="grid grid-cols-2">
+            <DirectionAwareHover imageUrl="/timeline/Exhibition1.jpg">
+              <div>Won first place project proposal</div>
+            </DirectionAwareHover>
+            <DirectionAwareHover imageUrl="/timeline/Exhibition2.jpg">
+              <div>Rajamangala University of Technology Krungthep</div>
+            </DirectionAwareHover>
+          </div>
+        </div>
+      ),
+    },
     {
       title: (
         <>
@@ -27,9 +52,16 @@ export function TimelineDemo() {
             </p>
           </div>
           {/* <div className="grid grid-cols-3 gap-4"> */}
+          <DirectionAwareHover
+            imageClassName="object-fill"
+            imageUrl="/timeline/medium1.jpg"
+          >
+            <div>SSL Office</div>
+          </DirectionAwareHover>
         </div>
       ),
     },
+
     // {
     //   title: "Early 2023",
     //   content: (
