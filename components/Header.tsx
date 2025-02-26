@@ -71,7 +71,7 @@ function Navbar({ className }: { className?: string }) {
         <div className="flex items-center gap-1 max-md:text-base max-sm:text-xs">
           <SlEnvolopeLetter />
           <MenuItem setActive={setActive} active={active} item="Contact">
-            <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+            <div className="  text-sm grid grid-cols-2 gap-10 p-4 max-md:grid-cols-1">
               <ProductItem
                 imagesize="max-h-[100px] max-w-[140px]"
                 title="Git"
