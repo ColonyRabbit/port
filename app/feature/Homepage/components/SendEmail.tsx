@@ -29,7 +29,7 @@ export function SendEmail() {
     setErrorZod(null);
     const validate = schema.safeParse(data);
     if (validate.success) {
-      const res: IResEmail = emailjs
+      emailjs
         .sendForm(
           "service_u3j5bfi",
           "template_w0nbmtj",
@@ -37,8 +37,10 @@ export function SendEmail() {
           "mSGo5tXM2BbJSzXbu"
         )
         .then(
-          (res) => {
-            if (res.status === 200) setStateSend(true);
+          (response) => {
+            if (response.status === 200) {
+              setStateSend(true);
+            }
           },
           (error) => {
             console.log("FAILED...", error.text);
@@ -49,6 +51,7 @@ export function SendEmail() {
       console.log(errorZod);
     }
   };
+
   return (
     <div
       className="grid grid-cols-2 max-lg:grid-cols-1"

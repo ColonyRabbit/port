@@ -7,7 +7,7 @@ export function WorldMapDemo() {
     <div className=" dark:bg-black bg-white w-full">
       <div className="max-w-7xl mx-auto text-center">
         <p className="font-bold text-xl md:text-4xl dark:text-white text-black">
-          Sendding to{" "}
+          Sending to{" "}
           <span className="text-neutral-400">
             {"khanakorn".split("").map((word, idx) => (
               <motion.span
