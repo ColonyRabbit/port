@@ -19,13 +19,25 @@ export function TimelineDemo() {
           </div>
           {/* <div className="grid grid-cols-3 gap-4"> */}
           {/* <FocusCardsExhibition /> */}
-          <div className="grid grid-cols-2">
-            <DirectionAwareHover imageUrl="/timeline/Exhibition1.jpg">
+          <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-x-2">
+            <Image
+              src="/timeline/Exhibition1.jpg"
+              width={500}
+              height={500}
+              alt="Won first place project proposal"
+            />
+            <Image
+              src="/timeline/Exhibition2.jpg"
+              width={500}
+              height={500}
+              alt="Rajamangala University of Technology Krungthep"
+            />
+            {/* <DirectionAwareHover imageUrl="/timeline/Exhibition1.jpg">
               <div>Won first place project proposal</div>
             </DirectionAwareHover>
             <DirectionAwareHover imageUrl="/timeline/Exhibition2.jpg">
               <div>Rajamangala University of Technology Krungthep</div>
-            </DirectionAwareHover>
+            </DirectionAwareHover> */}
           </div>
         </div>
       ),
@@ -52,12 +64,18 @@ export function TimelineDemo() {
             </p>
           </div>
           {/* <div className="grid grid-cols-3 gap-4"> */}
-          <DirectionAwareHover
+          {/* <DirectionAwareHover
             imageClassName="object-fill"
             imageUrl="/timeline/medium1.jpg"
           >
             <div>SSL Office</div>
-          </DirectionAwareHover>
+          </DirectionAwareHover> */}
+          <Image
+            src="/timeline/medium1.jpg"
+            width={500}
+            height={500}
+            alt="SSL Office"
+          />
         </div>
       ),
     },
