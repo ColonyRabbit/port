@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ToggleTheme } from "@/components/ToggleTheme";
+import { Button } from "@/components/ui/button";
+import Scroll from "@/components/Scroll";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -39,6 +41,7 @@ export default function RootLayout({
           <div className="fixed bottom-4 right-4 lg:hidden">
             <ToggleTheme />
           </div>
+          <Scroll />
         </ThemeProvider>
       </body>
     </html>
