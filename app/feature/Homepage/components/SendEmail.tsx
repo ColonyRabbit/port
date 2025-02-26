@@ -82,7 +82,7 @@ export function SendEmail() {
               <Input
                 value={data.Username}
                 name="user_name"
-                placeholder="Tyler"
+                placeholder="khanakorn koistkhongchana"
                 type="text"
                 onChange={(e) => {
                   setData({ ...data, Username: e.target.value });
@@ -106,7 +106,7 @@ export function SendEmail() {
                 setData({ ...data, Useremail: e.target.value });
               }}
               name="user_email"
-              placeholder="projectmayhem@fc.com"
+              placeholder="me@mail.com"
               type="email"
             />
             {errorZod?.errors.find((err) => err.path[0] === "Useremail") && (
@@ -121,6 +121,7 @@ export function SendEmail() {
           <LabelInputContainer className="mb-4">
             <Label htmlFor="message">message</Label>
             <Input
+              placeholder="Dear khanakorn"
               value={data.Message}
               onChange={(e) => {
                 setData({ ...data, Message: e.target.value });
