@@ -2,7 +2,6 @@
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import React from "react";
 import { FlipWordsDemo } from "./FlipWordsDemo";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { FaMedium } from "react-icons/fa";
 
