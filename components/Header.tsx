@@ -44,7 +44,7 @@ function Navbar({ className }: { className?: string }) {
         <CiClock1 />
       </p>
       <Menu
-        className=" flex  items-center w-1/2 justify-around max-md:w-auto max-md:px-2"
+        className=" flex  items-center w-1/2 justify-around max-md:w-full max-md:px-2"
         setActive={setActive}
       >
         <div className="flex items-center gap-1 max-md:text-base max-sm:text-xs">
@@ -111,7 +111,7 @@ function Navbar({ className }: { className?: string }) {
           </MenuItem>
         </div>
       </Menu>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 max-md:hidden">
         <ToggleTheme />
       </div>
     </div>

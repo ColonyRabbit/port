@@ -33,9 +33,9 @@ export function ToggleTheme() {
         <Button
           variant="outline"
           size="icon"
-          className="relative w-auto h-auto md:px-7 md:py-4 border-none flex bg-opacity-0 items-center md:justify-around max-md:text-base max-sm:text-xs bg-white dark:bg-neutral-950"
+          className="relative w-auto h-auto max-md:text-4xl md:px-7 md:py-4 border-none flex bg-opacity-0 items-center md:justify-around rounded-3xl max-sm:text-xs bg-white dark:bg-neutral-950"
         >
-          <p className="ml-2">{theme}</p>
+          <p className="ml-2 max-md:hidden">{theme}</p>
           <Sun
             className={`h-6 w-6 transition-transform duration-300 ${
               currentTheme === "dark"
