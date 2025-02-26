@@ -6,13 +6,23 @@ import React from "react";
 export function InfiniteMovingCardsDemo() {
   return (
     <div className="h-[40rem] rounded-md flex flex-col antialiased  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      {/* md */}
       <InfiniteMovingCards
+        className="max-md:hidden"
         items={frontendTechnologies}
         direction="right"
         speed="slow"
       />
       <InfiniteMovingCards
+        className="max-md:hidden"
         items={backendTechnologies}
+        direction="left"
+        speed="slow"
+      />
+      {/* max-md */}
+      <InfiniteMovingCards
+        className="md:hidden"
+        items={[...backendTechnologies, ...frontendTechnologies]}
         direction="left"
         speed="slow"
       />

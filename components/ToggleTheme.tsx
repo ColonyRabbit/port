@@ -30,16 +30,21 @@ export function ToggleTheme() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="relative w-10 h-10">
+        <Button
+          variant="outline"
+          size="icon"
+          className="relative w-auto h-auto md:px-7 md:py-4 border-none flex bg-opacity-0 items-center md:justify-around max-md:text-base max-sm:text-xs bg-white dark:bg-neutral-950"
+        >
+          <p className="ml-2">{theme}</p>
           <Sun
-            className={`h-6 w-6 transition-all ${
+            className={`h-6 w-6 transition-transform duration-300 ${
               currentTheme === "dark"
                 ? "-rotate-90 scale-0"
                 : "rotate-0 scale-100"
             }`}
           />
           <Moon
-            className={`absolute h-6 w-6 transition-all ${
+            className={`h-6 w-6 transition-transform duration-300 ${
               currentTheme === "dark"
                 ? "rotate-0 scale-100"
                 : "rotate-90 scale-0"
