@@ -39,7 +39,7 @@ function Navbar({ className }: { className?: string }) {
         className
       )}
     >
-      <p className="flex gap-4 items-center max-lg:text-2xl max-sm:text-xs bg-white dark:bg-neutral-950 p-2 rounded-3xl max-lg:hidden">
+      <p className="flex gap-4 items-center text-3xl  max-sm:text-xs bg-white dark:bg-neutral-950 p-2 rounded-3xl max-lg:hidden">
         {time.toLocaleTimeString()}
         <CiClock1 />
       </p>

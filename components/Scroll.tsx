@@ -46,7 +46,7 @@ const Scroll: React.FC = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg z-50"
+          className="fixed lg:bottom-5 lg:right-5 max-md:bottom-5 max-md:left-5 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg z-50"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           initial={{ opacity: 0, y: 20 }}
