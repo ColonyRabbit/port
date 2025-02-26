@@ -14,7 +14,7 @@ export function BackgroundBeamsWithCollisionDemo() {
         {/* right */}
         <div className="flex flex-col justify-center items-center max-md:w-full">
           <h2 className="text-2xl text-right md:relative md:z-20 md:text-4xl lg:text-7xl font-bold text-black dark:text-white font-sans tracking-tight max-md:w-full">
-            <div className="md:relative p-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-950 via-violet-950 to-blue-950 ">
+            <div className="md:relative p-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-950 via-violet-950 to-blue-950 dark:bg-gradient-to-r dark:from[#EABDE6] dark:via-[#D69ADE] dark:to-[#AA60C8] ">
               <p className="max-md:text-center">
                 Hi, I&apos;m Khanakorn Kositkhongchana
               </p>

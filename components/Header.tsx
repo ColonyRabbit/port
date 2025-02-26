@@ -39,16 +39,16 @@ function Navbar({ className }: { className?: string }) {
         className
       )}
     >
-      <p className="flex gap-4 items-center max-md:text-base max-sm:text-xs bg-white dark:bg-neutral-950 p-2 rounded-3xl max-md:hidden">
+      <p className="flex gap-4 items-center max-lg:text-2xl max-sm:text-xs bg-white dark:bg-neutral-950 p-2 rounded-3xl max-lg:hidden">
         {time.toLocaleTimeString()}
         <CiClock1 />
       </p>
       <Menu
-        className=" flex  items-center w-1/2 justify-around max-md:w-full max-md:px-2"
+        className=" flex  items-center w-1/2 justify-around max-lg:w-full max-lg:px-2"
         setActive={setActive}
       >
-        <div className="flex items-center gap-1 max-md:text-base max-sm:text-xs">
-          <Link className="flex" href="/">
+        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
+          <Link className="flex items-center" href="/">
             {" "}
             <IoHomeOutline />
             <MenuItem setActive={setActive} active={active} item="Home">
@@ -61,17 +61,17 @@ function Navbar({ className }: { className?: string }) {
             </MenuItem>
           </Link>
         </div>
-        <div className="flex items-center gap-1 max-md:text-base max-sm:text-xs">
+        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
           <RiContactsFill />
 
-          <Link className="max-md:text-base max-sm:text-xs" href="about">
+          <Link className="max-lg:text-2xl max-sm:text-xs" href="about">
             About me
           </Link>
         </div>
-        <div className="flex items-center gap-1 max-md:text-base max-sm:text-xs">
+        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
           <SlEnvolopeLetter />
           <MenuItem setActive={setActive} active={active} item="Contact">
-            <div className="  text-sm grid grid-cols-2 gap-10 p-4 max-md:grid-cols-1">
+            <div className="  text-sm grid grid-cols-2 gap-10 p-4 max-lg:grid-cols-1">
               <ProductItem
                 imagesize="max-h-[100px] max-w-[140px]"
                 title="Git"
@@ -96,7 +96,7 @@ function Navbar({ className }: { className?: string }) {
             </div>
           </MenuItem>
         </div>
-        <div className="flex items-center gap-1 max-md:text-base max-sm:text-xs">
+        <div className="flex items-center gap-1 max-lg:text-2xl max-sm:text-xs">
           {" "}
           <FaHourglassStart />
           <MenuItem setActive={setActive} active={active} item="Experience">
@@ -111,7 +111,7 @@ function Navbar({ className }: { className?: string }) {
           </MenuItem>
         </div>
       </Menu>
-      <div className="flex items-center gap-4 max-md:hidden">
+      <div className="flex items-center gap-4 max-lg:hidden">
         <ToggleTheme />
       </div>
     </div>
