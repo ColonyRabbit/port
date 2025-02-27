@@ -78,11 +78,11 @@ export function SendEmail() {
             className={`flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4`}
           >
             <LabelInputContainer>
-              <Label htmlFor="Username">Username</Label>
+              <Label htmlFor="Username">Who are you</Label>
               <Input
                 value={data.Username}
                 name="user_name"
-                placeholder="khanakorn koistkhongchana"
+                placeholder="barry allen"
                 type="text"
                 onChange={(e) => {
                   setData({ ...data, Username: e.target.value });
@@ -99,7 +99,7 @@ export function SendEmail() {
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="Useremail">Useremail</Label>
+            <Label htmlFor="Useremail">Email</Label>
             <Input
               value={data.Useremail}
               onChange={(e) => {
@@ -120,14 +120,14 @@ export function SendEmail() {
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="message">message</Label>
-            <Input
+            <textarea
+              className="h-40"
               placeholder="Dear khanakorn"
               value={data.Message}
               onChange={(e) => {
                 setData({ ...data, Message: e.target.value });
               }}
               name="message"
-              type="Send"
             />
             {errorZod?.errors.find((err) => err.path[0] === "Message") && (
               <p className="text-red-500 text-sm">
