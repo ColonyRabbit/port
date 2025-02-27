@@ -61,6 +61,7 @@ export function SendEmail() {
 
   return (
     <div
+      data-aos="fade-up"
       className="grid grid-cols-1 relative"
       style={{ paddingLeft: "10%", paddingRight: "10%" }}
     >
