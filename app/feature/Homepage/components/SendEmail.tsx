@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
@@ -9,8 +9,12 @@ import { z } from "zod";
 import { WorldMapDemo } from "./WorldMapDemo";
 import { IReqEmail } from "@/app/type/EmailJsType";
 import Image from "next/image";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 export function SendEmail() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const form = useRef<HTMLFormElement | null>(null);
   const [statSend, setStateSend] = useState<boolean>(false);
   const [errorZod, setErrorZod] = useState<z.ZodError<IReqEmail> | null>(null);
@@ -29,6 +33,8 @@ export function SendEmail() {
     setErrorZod(null);
     const validate = schema.safeParse(data);
     if (validate.success) {
+      setStateSend(true);
+
       emailjs
         .sendForm(
           process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -39,7 +45,7 @@ export function SendEmail() {
         .then(
           (response) => {
             if (response.status === 200) {
-              setStateSend(true);
+              console.log(response);
             }
           },
           (error) => {
@@ -57,7 +63,10 @@ export function SendEmail() {
       className="grid grid-cols-2 max-lg:grid-cols-1 relative"
       style={{ paddingLeft: "10%", paddingRight: "10%" }}
     >
-      <div className="w-full mx-auto rounded-none   p-4 md:p-8  bg-white dark:bg-black">
+      <div
+        data-aos="zoom-out-up"
+        className="w-full mx-auto rounded-none   p-4 md:p-8  bg-white dark:bg-black"
+      >
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
           If you are interested
         </h2>
@@ -152,9 +161,12 @@ export function SendEmail() {
         </form>
       </div>
       {statSend ? (
-        <WorldMapDemo />
+        <div data-aos="flip-left">
+          <WorldMapDemo />
+        </div>
       ) : (
         <Image
+          data-aos="zoom-out-down"
           src="/Email/email.png"
           width={2000}
           height={2000}

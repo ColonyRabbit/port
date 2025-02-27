@@ -1,16 +1,25 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { Timeline, TimelineEntry } from "@/components/ui/timeline";
 import { FocusCardsExhibition } from "./FocusCardsExhibition";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export function TimelineDemo() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const data: TimelineEntry[] = [
     {
       title: <>Exhibition 19 MAR 2024</>,
       content: (
         <div>
-          <div className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+          <div
+            data-aos="fade-up"
+            className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8"
+          >
             Rajamangala University of Technology Krungthep .
             <p>
               I participated in a project proposal competition in the Faculty of
@@ -21,12 +30,14 @@ export function TimelineDemo() {
           {/* <FocusCardsExhibition /> */}
           <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-x-2">
             <Image
+              data-aos="fade-right"
               src="/timeline/Exhibition1.jpg"
               width={500}
               height={500}
               alt="Won first place project proposal"
             />
             <Image
+              data-aos="fade-left"
               src="/timeline/Exhibition2.jpg"
               width={500}
               height={500}
@@ -51,9 +62,12 @@ export function TimelineDemo() {
       ),
       content: (
         <div>
-          <div className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+          <div
+            data-aos="fade-up"
+            className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8"
+          >
             SSL Logistics Co., Ltd.
-            <p>
+            <p data-aos="fade-up">
               Project dealer : Managed the operation of B2B web applications for
               logistics business clients. Collaborated with different teams to
               develop and improve applications for business use. Fixed issues
@@ -71,6 +85,7 @@ export function TimelineDemo() {
             <div>SSL Office</div>
           </DirectionAwareHover> */}
           <Image
+            data-aos="flip-left"
             src="/timeline/medium1.jpg"
             width={500}
             height={500}
