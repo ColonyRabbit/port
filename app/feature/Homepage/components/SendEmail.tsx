@@ -11,6 +11,7 @@ import { IReqEmail } from "@/app/type/EmailJsType";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Meteors } from "@/components/ui/meteors";
 export function SendEmail() {
   useEffect(() => {
     AOS.init();
@@ -60,120 +61,128 @@ export function SendEmail() {
 
   return (
     <div
-      className="grid grid-cols-2 max-lg:grid-cols-1 relative"
+      className="grid grid-cols-1 relative"
       style={{ paddingLeft: "10%", paddingRight: "10%" }}
     >
-      <div
-        data-aos="zoom-out-up"
-        className="w-full mx-auto rounded-none   p-4 md:p-8  bg-white dark:bg-black"
-      >
-        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-          If you are interested
-        </h2>
-        <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-          Way to contact Me
-        </p>
-        {/* <form ref={form} onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input type="text" name="user_name" />
-        <label>Email</label>
-        <input type="email" name="user_email" />
-        <label>Message</label>
-        <textarea name="message" />
-        <input type="submit" value="Send" />
-      </form> */}
-        <form ref={form} className="my-8" onSubmit={handleSubmit}>
-          <div
-            className={`flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4`}
-          >
-            <LabelInputContainer>
-              <Label htmlFor="Username">Who are you</Label>
-              <Input
-                value={data.Username}
-                name="user_name"
-                placeholder="barry allen"
-                type="text"
-                onChange={(e) => {
-                  setData({ ...data, Username: e.target.value });
-                }}
-              />
-              {errorZod?.errors.find((err) => err.path[0] === "Username") && (
-                <p className="text-red-500 text-sm">
-                  {
-                    errorZod.errors.find((err) => err.path[0] === "Username")
-                      ?.message
-                  }
-                </p>
-              )}
-            </LabelInputContainer>
-          </div>
-          <LabelInputContainer className="mb-4">
-            <Label htmlFor="Useremail">Email</Label>
-            <Input
-              value={data.Useremail}
-              onChange={(e) => {
-                setData({ ...data, Useremail: e.target.value });
-              }}
-              name="user_email"
-              placeholder="me@mail.com"
-              type="email"
-            />
-            {errorZod?.errors.find((err) => err.path[0] === "Useremail") && (
-              <p className="text-red-500 text-sm">
-                {
-                  errorZod.errors.find((err) => err.path[0] === "Useremail")
-                    ?.message
-                }
+      <div className="w-full flex items-center justify-items-center">
+        <div className=" w-full relative flex ">
+          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
+          <div className="relative shadow-xl bg-gray-900 border border-gray-800 w-full gap-x-10  px-4 py-8 h-full overflow-hidden rounded-2xl grid grid-cols-2 max-lg:grid-cols-1 justify-end items-center">
+            <div
+              data-aos="zoom-out-up"
+              className="w-full mx-auto rounded-3xl    p-4 md:p-8  bg-white dark:bg-black"
+            >
+              <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+                If you are interested
+              </h2>
+              <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                Way to contact Me
               </p>
-            )}
-          </LabelInputContainer>
-          <LabelInputContainer className="mb-4">
-            <Label htmlFor="message">message</Label>
-            <textarea
-              className="h-40"
-              placeholder="Dear khanakorn"
-              value={data.Message}
-              onChange={(e) => {
-                setData({ ...data, Message: e.target.value });
-              }}
-              name="message"
-            />
-            {errorZod?.errors.find((err) => err.path[0] === "Message") && (
-              <p className="text-red-500 text-sm">
-                {
-                  errorZod.errors.find((err) => err.path[0] === "Message")
-                    ?.message
-                }
-              </p>
-            )}
-          </LabelInputContainer>
-          <button
-            disabled={statSend}
-            value="Send"
-            className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-            type="submit"
-          >
-            {statSend ? <p>Sended</p> : <p> Send To me &rarr;</p>}
-            <BottomGradient />
-          </button>
 
-          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-        </form>
-      </div>
-      {statSend ? (
-        <div data-aos="flip-left">
-          <WorldMapDemo />
+              <form ref={form} className="my-8" onSubmit={handleSubmit}>
+                <div
+                  className={`flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4`}
+                >
+                  <LabelInputContainer>
+                    <Label htmlFor="Username">Who are you</Label>
+                    <Input
+                      value={data.Username}
+                      name="user_name"
+                      placeholder="barry allen"
+                      type="text"
+                      onChange={(e) => {
+                        setData({ ...data, Username: e.target.value });
+                      }}
+                    />
+                    {errorZod?.errors.find(
+                      (err) => err.path[0] === "Username"
+                    ) && (
+                      <p className="text-red-500 text-sm">
+                        {
+                          errorZod.errors.find(
+                            (err) => err.path[0] === "Username"
+                          )?.message
+                        }
+                      </p>
+                    )}
+                  </LabelInputContainer>
+                </div>
+                <LabelInputContainer className="mb-4">
+                  <Label htmlFor="Useremail">Email</Label>
+                  <Input
+                    value={data.Useremail}
+                    onChange={(e) => {
+                      setData({ ...data, Useremail: e.target.value });
+                    }}
+                    name="user_email"
+                    placeholder="me@mail.com"
+                    type="email"
+                  />
+                  {errorZod?.errors.find(
+                    (err) => err.path[0] === "Useremail"
+                  ) && (
+                    <p className="text-red-500 text-sm">
+                      {
+                        errorZod.errors.find(
+                          (err) => err.path[0] === "Useremail"
+                        )?.message
+                      }
+                    </p>
+                  )}
+                </LabelInputContainer>
+                <LabelInputContainer className="mb-4">
+                  <Label htmlFor="message">message</Label>
+                  <textarea
+                    className="h-40"
+                    placeholder="Dear khanakorn"
+                    value={data.Message}
+                    onChange={(e) => {
+                      setData({ ...data, Message: e.target.value });
+                    }}
+                    name="message"
+                  />
+                  {errorZod?.errors.find(
+                    (err) => err.path[0] === "Message"
+                  ) && (
+                    <p className="text-red-500 text-sm">
+                      {
+                        errorZod.errors.find((err) => err.path[0] === "Message")
+                          ?.message
+                      }
+                    </p>
+                  )}
+                </LabelInputContainer>
+                <button
+                  disabled={statSend}
+                  value="Send"
+                  className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                  type="submit"
+                >
+                  {statSend ? <p>Sended</p> : <p> Send To me &rarr;</p>}
+                  <BottomGradient />
+                </button>
+
+                <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
+              </form>
+            </div>
+            {statSend ? (
+              <div data-aos="flip-left w-full ">
+                <WorldMapDemo />
+              </div>
+            ) : (
+              <Image
+                data-aos="zoom-out-down"
+                src="/Email/email.png"
+                width={2000}
+                height={2000}
+                alt="email"
+                className="w-full h-full rounded-3xl"
+              />
+            )}{" "}
+            <Meteors number={20} />
+          </div>
         </div>
-      ) : (
-        <Image
-          data-aos="zoom-out-down"
-          src="/Email/email.png"
-          width={2000}
-          height={2000}
-          alt="email"
-          className="w-full h-full"
-        />
-      )}
+      </div>
     </div>
   );
 }
