@@ -11,6 +11,8 @@ import { IReqEmail, IResEmail } from "@/app/type/EmailJsType";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { MdError } from "react-icons/md";
+
 import { Meteors } from "@/components/ui/meteors";
 export function SendEmail() {
   useEffect(() => {
@@ -99,7 +101,8 @@ export function SendEmail() {
                     {errorZod?.errors.find(
                       (err) => err.path[0] === "Username"
                     ) && (
-                      <p className="text-red-500 text-sm">
+                      <p className="text-red-500 flex items-center gap-2 text-sm">
+                        <MdError />
                         {
                           errorZod.errors.find(
                             (err) => err.path[0] === "Username"
@@ -123,7 +126,8 @@ export function SendEmail() {
                   {errorZod?.errors.find(
                     (err) => err.path[0] === "Useremail"
                   ) && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-red-500 flex items-center gap-2 text-sm">
+                      <MdError />
                       {
                         errorZod.errors.find(
                           (err) => err.path[0] === "Useremail"
@@ -146,7 +150,8 @@ export function SendEmail() {
                   {errorZod?.errors.find(
                     (err) => err.path[0] === "Message"
                   ) && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-red-500 flex items-center gap-2 text-sm">
+                      <MdError />
                       {
                         errorZod.errors.find((err) => err.path[0] === "Message")
                           ?.message

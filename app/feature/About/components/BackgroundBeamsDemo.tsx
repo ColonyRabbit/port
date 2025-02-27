@@ -4,6 +4,7 @@ import React from "react";
 import { FlipWordsDemo } from "./FlipWordsDemo";
 import { useRouter } from "next/navigation";
 import { FaMedium } from "react-icons/fa";
+import { SiReaddotcv } from "react-icons/si";
 
 export function BackgroundBeamsDemo() {
   //useRoute
@@ -16,15 +17,23 @@ export function BackgroundBeamsDemo() {
         </h1>
       </div>
       <BackgroundBeams />
-      <button
-        onClick={() => route.push("https://medium.com/@khanakorn01")}
-        className="p-[3px] relative"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl" />
-        <p className="px-8 py-2 flex items-center gap-2  bg-black rounded-3xl  relative group transition duration-200 text-white hover:bg-transparent">
-          Here my Medium blog <FaMedium />
-        </p>
-      </button>
+      <div className="flex gap-10 max-md:flex-col">
+        <button
+          onClick={() => route.push("https://medium.com/@khanakorn01")}
+          className="p-[3px] relative"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl" />
+          <p className="px-8 py-2 flex items-center gap-2  bg-black rounded-3xl  relative group transition duration-200 text-white hover:bg-transparent">
+            Here is my Medium blog <FaMedium />
+          </p>
+        </button>
+        <a href="/CV/cv.pdf" target="_blank" className="p-[3px] relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl" />
+          <p className="px-8 py-2 flex items-center gap-2  bg-black rounded-3xl  relative group transition duration-200 text-white hover:bg-transparent">
+            Here is my CV <SiReaddotcv />
+          </p>
+        </a>
+      </div>
     </div>
   );
 }
