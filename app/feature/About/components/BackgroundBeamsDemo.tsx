@@ -27,7 +27,7 @@ export function BackgroundBeamsDemo() {
             Here is my Medium blog <FaMedium />
           </p>
         </button>
-        <a href="/CV/cv.pdf" target="_blank" className="p-[3px] relative">
+        <a href="/CV/cv.pdf" download className="p-[3px] relative">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl" />
           <p className="px-8 py-2 flex items-center gap-2  bg-black rounded-3xl  relative group transition duration-200 text-white hover:bg-transparent">
             Here is my CV <SiReaddotcv />
