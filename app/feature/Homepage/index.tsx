@@ -5,7 +5,7 @@ import { SendEmail } from "./components/SendEmail";
 
 const IndexHomepage = () => {
   return (
-    <div className="">
+    <div className="w-auto">
       <BackgroundBeamsWithCollisionDemo />
       <TimelineDemo />
       <SendEmail />

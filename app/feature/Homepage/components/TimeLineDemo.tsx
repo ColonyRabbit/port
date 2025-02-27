@@ -23,7 +23,7 @@ export function TimelineDemo() {
 
           <div className="grid grid-cols-2 gap-4">
             <Image
-              data-aos="fade-right"
+              data-aos="fade-up"
               src="/timeline/Exhibition1.jpg"
               width={500}
               height={500}
@@ -31,7 +31,7 @@ export function TimelineDemo() {
               alt="Won first place project proposal"
             />
             <Image
-              data-aos="fade-left"
+              data-aos="fade-up"
               src="/timeline/Exhibition2.jpg"
               width={500}
               height={500}
