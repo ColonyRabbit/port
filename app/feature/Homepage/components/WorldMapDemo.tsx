@@ -4,7 +4,10 @@ import { motion } from "motion/react";
 
 export function WorldMapDemo() {
   return (
-    <div className=" dark:bg-black bg-white w-full rounded-3xl flex flex-col overflow-hidden h-full">
+    <div
+      data-aos="flip-left "
+      className=" dark:bg-black bg-white w-full rounded-3xl flex flex-col overflow-hidden h-full"
+    >
       <div className="max-w-7xl mx-auto text-center h-full">
         <p className="font-bold text-xl md:text-4xl h-full dark:text-white text-black">
           Sending to{" "}

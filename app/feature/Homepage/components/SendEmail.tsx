@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
 import { WorldMapDemo } from "./WorldMapDemo";
-import { IReqEmail } from "@/app/type/EmailJsType";
+import { IReqEmail, IResEmail } from "@/app/type/EmailJsType";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -44,7 +44,7 @@ export function SendEmail() {
           process.env.NEXT_PUBLIC_PUBLIC_KEY
         )
         .then(
-          (response) => {
+          (response: IResEmail) => {
             if (response.status === 200) {
               console.log(response);
             }
@@ -67,7 +67,7 @@ export function SendEmail() {
       <div className="w-full flex items-center justify-items-center">
         <div className=" w-full relative flex ">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
-          <div className="relative shadow-xl bg-gray-900 border border-gray-800 w-full gap-x-10  px-4 py-8 h-full overflow-hidden rounded-2xl grid grid-cols-2 max-lg:grid-cols-1 justify-end items-center">
+          <div className="relative shadow-xl bg-gray-900 border border-gray-800 w-full gap-10  px-4 py-8 h-full overflow-hidden rounded-2xl grid grid-cols-2 max-lg:grid-cols-1 justify-end items-center">
             <div
               data-aos="zoom-out-up"
               className="w-full mx-auto rounded-3xl    p-4 md:p-8  bg-white dark:bg-black"
@@ -166,7 +166,7 @@ export function SendEmail() {
               </form>
             </div>
             {statSend ? (
-              <div data-aos="flip-left w-full ">
+              <div data-aos="flip-left ">
                 <WorldMapDemo />
               </div>
             ) : (
