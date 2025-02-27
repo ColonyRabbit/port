@@ -25,7 +25,7 @@ export function SendEmail() {
     Message: "",
   });
   const schema = z.object({
-    Username: z.string().min(1, { message: "Username is required" }),
+    Username: z.string().min(1, { message: "Name is required" }),
     Useremail: z.string().email({ message: "Invalid email address" }),
     Message: z.string().min(1, { message: "Message cannot be empty" }),
   });
@@ -179,7 +179,7 @@ export function SendEmail() {
                 className="w-full h-full rounded-3xl"
               />
             )}{" "}
-            <Meteors number={20} />
+            <Meteors number={100} />
           </div>
         </div>
       </div>

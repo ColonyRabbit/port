@@ -101,9 +101,17 @@ function Navbar({ className }: { className?: string }) {
           <FaHourglassStart />
           <MenuItem setActive={setActive} active={active} item="Experience">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink scroll={true} href="/#Experience">
+              {/* <HoveredLink scroll={true} href="/#Experience"> */}
+              <button
+                onClick={() => {
+                  document
+                    .querySelector("#Experience")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 Experience
-              </HoveredLink>
+              </button>
+              {/* </HoveredLink> */}
               {/* <HoveredLink href="/individual">Individual</HoveredLink>
             <HoveredLink href="/team">Team</HoveredLink>
             <HoveredLink href="/enterprise">Enterprise</HoveredLink> */}
