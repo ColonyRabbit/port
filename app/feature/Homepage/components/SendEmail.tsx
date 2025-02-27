@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
 import { WorldMapDemo } from "./WorldMapDemo";
-import { IReqEmail, IResEmail } from "@/app/type/EmailJsType";
+import { IReqEmail } from "@/app/type/EmailJsType";
 import Image from "next/image";
 
 export function SendEmail() {
