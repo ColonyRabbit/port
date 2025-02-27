@@ -79,20 +79,28 @@ function Navbar({ className }: { className?: string }) {
                 src="/git.jpg"
                 description="My Git Hub"
               />
-              <ProductItem
-                imagesize="max-h-[100px] max-w-[140px]"
-                title="Gmail"
-                href="mailto:khanakorn01@gmail.com"
-                src="/gmail.jpg"
-                description="My Gmail"
-              />
-              <ProductItem
+              <button
+                onClick={() => {
+                  document
+                    .querySelector("#Email")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <ProductItem
+                  imagesize="max-h-[100px] max-w-[140px]"
+                  title="Gmail"
+                  href=""
+                  src="/gmail.jpg"
+                  description="My Gmail"
+                />
+              </button>
+              {/* <ProductItem
                 imagesize="max-h-[100px] max-w-[140px]"
                 title="Facebook"
                 href="https://gomoonbeam.com"
                 src="/facebook.jpg"
                 description="My Facebook"
-              />
+              /> */}
             </div>
           </MenuItem>
         </div>

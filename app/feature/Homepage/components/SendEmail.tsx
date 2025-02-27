@@ -61,6 +61,7 @@ export function SendEmail() {
 
   return (
     <div
+      id="Email"
       data-aos="fade-up"
       className="grid grid-cols-1 relative"
       style={{ paddingLeft: "10%", paddingRight: "10%" }}
@@ -116,7 +117,7 @@ export function SendEmail() {
                       setData({ ...data, Useremail: e.target.value });
                     }}
                     name="user_email"
-                    placeholder="me@mail.com"
+                    placeholder="Your Email"
                     type="email"
                   />
                   {errorZod?.errors.find(
@@ -132,10 +133,10 @@ export function SendEmail() {
                   )}
                 </LabelInputContainer>
                 <LabelInputContainer className="mb-4">
-                  <Label htmlFor="message">message</Label>
+                  <Label htmlFor="message">Message</Label>
                   <textarea
-                    className="h-40"
-                    placeholder="Dear khanakorn"
+                    className="h-40  rounded-lg border focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600 border-gray-300 text-gray-900 text-sm resize-none block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="Message to me"
                     value={data.Message}
                     onChange={(e) => {
                       setData({ ...data, Message: e.target.value });
