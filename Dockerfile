@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 RUN chmod -R 777 /app
 
 # ติดตั้ง dependencies --force เพราะบางครั้งเวอร์ชันของ dependency อาจจะไม่ตรงกัน
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 # คัดลอกโค้ดทั้งหมด
 COPY . .

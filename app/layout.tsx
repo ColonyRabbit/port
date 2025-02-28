@@ -3,9 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ToggleTheme } from "@/components/ToggleTheme";
 import { Button } from "@/components/ui/button";
 import Scroll from "@/components/Scroll";
+import { ToggleTheme } from "@/components/ToggleTheme";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

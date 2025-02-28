@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/lib/utils";
-import { ToggleTheme } from "./ToggleTheme";
+import { Selectheme } from "./Selectheme";
 import { useTheme } from "next-themes";
 import { CiClock1 } from "react-icons/ci";
 import { IoHomeOutline } from "react-icons/io5";
@@ -128,7 +128,7 @@ function Navbar({ className }: { className?: string }) {
         </div>
       </Menu>
       <div className="flex items-center gap-4 max-lg:hidden">
-        <ToggleTheme />
+        <Selectheme />
       </div>
     </div>
   );
