@@ -35,7 +35,7 @@ function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed top-10 inset-x-0  mx-auto z-50 text-4xl drop-shadow-xl flex items-center justify-between  ",
+        "fixed top-10 inset-x-0  mx-auto z-50 text-4xl drop-shadow-xl flex items-center justify-around  ",
         className
       )}
     >
@@ -48,7 +48,7 @@ function Navbar({ className }: { className?: string }) {
         setActive={setActive}
       >
         <div className="flex items-center gap-1 text-2xl max-sm:text-xs">
-          <Link className="flex items-center" href="/">
+          <Link className="flex items-center gap-1" href="/">
             {" "}
             <IoHomeOutline />
             <MenuItem setActive={setActive} active={active} item="Home">
