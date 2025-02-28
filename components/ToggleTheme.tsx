@@ -37,12 +37,12 @@ export function ToggleTheme() {
       <p className="ml-2 max-lg:hidden text-3xl">{theme}</p>
       <Sun
         className={`h-8 w-8 transition-transform duration-300 ${
-          currentTheme === "dark" ? "-rotate-90 scale-0" : "rotate-0 scale-100"
+          currentTheme === "dark" ? "-rotate-100 scale-0" : "rotate-0 scale-100"
         }`}
       />
       <Moon
         className={`h-8 w-8 transition-transform duration-300 ${
-          currentTheme === "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0"
+          currentTheme === "dark" ? "rotate-0 scale-100" : "rotate-100 scale-0"
         }`}
       />
       <span className="sr-only">Toggle theme</span>
