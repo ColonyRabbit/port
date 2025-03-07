@@ -2,7 +2,7 @@ ame: CI/CD - dev
 
 on:
   push:
-    branches: [dev]
+    branches: dev
 
 jobs:
   deploy:
