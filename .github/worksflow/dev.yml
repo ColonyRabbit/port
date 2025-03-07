@@ -1,0 +1,95 @@
+ame: CI/CD - dev
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Add secrets to ENV
+        run: |
+          sed -i "s|NEXT_PUBLIC_SERVICE_ID_PLACEHOLDER|${NEXT_PUBLIC_SERVICE_ID}|g" env/.env.dev
+          sed -i "s|NEXT_PUBLIC_PUBLIC_KEY_PLACEHOLDER|${NEXT_PUBLIC_PUBLIC_KEY}|g" env/.env.dev
+          sed -i "s|NEXT_PUBLIC_TEMPLATE_ID_PLACEHOLDER|${NEXT_PUBLIC_TEMPLATE_ID}|g" env/.env.dev
+        env:
+          NEXT_PUBLIC_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_SERVICE_ID }}
+          NEXT_PUBLIC_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_PUBLIC_KEY }}
+          NEXT_PUBLIC_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_TEMPLATE_ID }}
+
+      - name: Build Docker Image
+        run: |
+          docker build --build-arg profile=dev -t port-khanakorn:${{ github.run_number }} -f ./docker/Dockerfile.dev .
+
+      - name: Install AWS CLI v2
+        run: |
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install --update
+
+      - name: Install Lightsailctl
+        run: |
+          sudo curl "https://s3.us-west-2.amazonaws.com/lightsailctl/latest/linux-amd64/lightsailctl" -o "/usr/local/bin/lightsailctl"
+          sudo chmod +x /usr/local/bin/lightsailctl
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Push Docker Image to AWS Lightsail
+        run: |
+          aws lightsail push-container-image \
+            --region ap-southeast-1 \
+            --service-name port \
+            --label port \
+            --image port-khanakorn:${{ github.run_number }}
+
+      - name: Get Latest Image from Lightsail
+        id: latest_image
+        run: |
+          latest_image=$(aws lightsail get-container-images \
+            --region ap-southeast-1 \
+            --service-name port \
+            --query 'containerImages[].[image, createdAt]' \
+            --output json | jq -r 'sort_by(.[1]) | last | .[0]')
+          echo "Latest image is $latest_image"
+          echo "::set-output name=image::$latest_image"
+
+      - name: Deploy to AWS Lightsail
+        run: |
+          aws lightsail create-container-service-deployment \
+            --region ap-southeast-1 \
+            --service-name port \
+            --containers "{
+              \"port\": {
+              \"image\": \"${{ steps.latest_image.outputs.image }}\",
+                \"environment\": {
+                  \"NEXT_PUBLIC_SERVICE_ID\": \"${{ secrets.NEXT_PUBLIC_SERVICE_ID }}\",
+                  \"NEXT_PUBLIC_PUBLIC_KEY\": \"${{ secrets.NEXT_PUBLIC_PUBLIC_KEY }}\",
+                  \"NEXT_PUBLIC_TEMPLATE_ID\": \"${{ secrets.NEXT_PUBLIC_TEMPLATE_ID }}\",
+                },               
+                \"ports\": {
+                  \"3000\": \"HTTP\",
+                  \"443\": \"HTTPS\"
+                }
+              }
+            }" \
+            --public-endpoint "{
+              \"containerName\": \"port\",
+              \"containerPort\": 3000,
+              \"healthCheck\": {
+                \"path\": \"/health-check\",
+                \"intervalSeconds\": 10
+              }
+            }"

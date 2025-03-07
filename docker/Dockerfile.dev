@@ -1,0 +1,79 @@
+# Stage 1: Base Image - Install global dependencies
+FROM node:20-alpine AS base
+RUN npm install -g pnpm env-cmd \
+    && apk add --no-cache libc6-compat
+
+# Stage 2: Install dependencies only when needed
+FROM base AS deps
+WORKDIR /app
+
+# Copy only the lock files to avoid unnecessary dependency installs
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+# Stage 3: Build the application
+FROM base AS builder
+WORKDIR /app
+
+# Copy dependencies from 'deps' stage
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Build the app (custom profile handling)
+ARG profile=dev
+RUN \
+  if [ -f yarn.lock ]; then yarn run build:${profile}; \
+  elif [ -f package-lock.json ]; then npm run build:${profile}; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm run build:${profile}; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+RUN cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/  
+
+# Stage 4: Final Production Image
+FROM base AS runner
+WORKDIR /app
+
+# Set environment variables
+ENV NODE_ENV=$profile \
+    TZ=Asia/Bangkok \
+    PORT=3000 \
+    NEXT_SHARP_PATH=/app/node_modules/sharp \
+    HOSTNAME="0.0.0.0"
+
+# Create non-root user to run the application for better security
+RUN addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 --ingroup nodejs nextjs
+
+# Copy the build artifacts from the builder stage
+COPY --from=builder /app/public ./public
+# COPY --from=builder --chown=nextjs:nodejs /app/public /_next/static/media
+
+# Ensure .next has correct permissions for the nextjs user to use
+RUN mkdir -p /app/.next && chown -R nextjs:nodejs /app/public /app/.next
+
+# Copy the Next.js static and standalone output to the container
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone /app/.next/standalone
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static /app/.next/static
+
+# # Copy the entrypoint script
+# COPY /docker/docker-entrypoint.sh /app/docker-entrypoint.sh
+
+# # Set execute permission for the entrypoint script
+# RUN chmod +x /app/docker-entrypoint.sh
+
+# Switch to non-root user
+USER nextjs
+
+# Expose port 3000 for the app to run
+EXPOSE 3000
+
+# Use the entrypoint script to start the container
+# ENTRYPOINT ["/app/docker-entrypoint.sh"]
+
+CMD node /app/.next/standalone/server.js
