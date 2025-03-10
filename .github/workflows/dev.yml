@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build --build-arg profile=dev -t port-khanakorn:${{ github.run_number }} -f ./docker/Dockerfile.dev .
+          docker build --build-arg profile=dev -t portkhanakorn:${{ github.run_number }} -f ./docker/Dockerfile.dev .
 
       - name: Install AWS CLI v2
         run: |
@@ -53,7 +53,7 @@ jobs:
             --region ap-southeast-1 \
             --service-name port \
             --label port \
-            --image port-khanakorn:${{ github.run_number }}
+            --image portkhanakorn:${{ github.run_number }}
 
       - name: Get Latest Image from Lightsail
         id: latest_image
