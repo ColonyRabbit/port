@@ -75,9 +75,9 @@ jobs:
               \"port\": {
               \"image\": \"${{ steps.latest_image.outputs.image }}\",
                 \"environment\": {
-                  \"NEXT_PUBLIC_SERVICE_ID\": \"${{ secrets.NEXT_PUBLIC_SERVICE_ID }}\",
-                  \"NEXT_PUBLIC_PUBLIC_KEY\": \"${{ secrets.NEXT_PUBLIC_PUBLIC_KEY }}\",
-                  \"NEXT_PUBLIC_TEMPLATE_ID\": \"${{ secrets.NEXT_PUBLIC_TEMPLATE_ID }}\",
+                  \"NEXT_PUBLIC_SERVICE_ID\": \"${{ env.NEXT_PUBLIC_SERVICE_ID }}\",
+                  \"NEXT_PUBLIC_PUBLIC_KEY\": \"${{ env.NEXT_PUBLIC_PUBLIC_KEY }}\",
+                  \"NEXT_PUBLIC_TEMPLATE_ID\": \"${{ env.NEXT_PUBLIC_TEMPLATE_ID }}\",
                 },               
                 \"ports\": {
                   \"3000\": \"HTTP\",
